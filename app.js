@@ -60,9 +60,8 @@ app.use((req, res, next) => {
 // get api
 app.get("/", (req, res) => {
   // res.redirect("https://kanlyte.com");
-  res.send("Don;t you think you are out of place ............");
+  res.send("Don't you think you are out of place ............");
 });
-//send email
 
 //user apis
 app.use("api/v6/", registeruser);
