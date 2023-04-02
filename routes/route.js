@@ -35,6 +35,9 @@ const {
   rooms_for_landlord_true,
   rooms_for_landlord_false,
   rooms_for_landlord,
+  delete_book,
+  reverse,
+  change,
 } = require("../controllers/hostel");
 const {
   owner_login,
@@ -124,10 +127,13 @@ const getbookings = router.get("/allbookings", all_bookings);
 const updatebooked = router.put("/booked/:id", update_booked);
 const deleteallbookings = router.delete("/deletebookings", delete_bookings);
 const userbooking = router.get("/booking/user/:user_id", user_booking);
-const landlordbooking = router.get(
-  "/booking/landlord/:landlord_id",
-  user_booking
-);
+const deletebook = router.delete("/delete/book/:id", delete_book);
+const reversebook = router.put("/reverse/false/:id", reverse);
+const changebook = router.put("/change/true/:id", change);
+// const landlordbooking = router.get(
+//   "/booking/landlord/:landlord_id",
+//   user_booking
+// );
 
 //routes for hostel owners
 
@@ -175,4 +181,7 @@ module.exports = {
   roomsforlandlordfalse,
   oneOwner,
   newslettersubscription,
+  reversebook,
+  changebook,
+  deletebook,
 };

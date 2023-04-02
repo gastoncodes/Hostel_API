@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const shortid = require("shortid");
 
 //_id to id
 const id = (schema) => {
@@ -248,11 +249,14 @@ const bookingRoomSchema = new mongoose.Schema({
   },
   book_status: {
     type: Boolean,
-    default: "false",
+    default: false,
   },
   booking_date: {
     type: Date,
     default: Date.now,
+  },
+  payment_code: {
+    type: String,
   },
 });
 id(bookingRoomSchema);

@@ -499,6 +499,7 @@ const book_room = async (req, res) => {
       level: req.body.level,
       type_of_entry: req.body.type_of_entry,
       location: req.body.location,
+      payment_code: req.body.payment_code,
       user_request: true,
       book_status: false, // meaning pending status
     });
@@ -638,13 +639,78 @@ const delete_bookings = async (req, res) => {
       });
     } else {
       res.send({
-        status: true,
+        status: false,
         data: "Room not Found",
       });
     }
   } catch (error) {
     console.log(error);
     res.send({ status: false, data: "An Error Occured", result: error });
+  }
+};
+
+// delete booking by booking id
+const delete_book = async (req, res) => {
+  try {
+    const one = await Bookings.findById(req.params.id);
+    if (one) {
+      const delete_one = await Bookings.deleteOne({ _id: req.params.id });
+      res.send({
+        status: true,
+        data: "delete",
+        result: delete_one,
+      });
+    } else {
+      res.send({
+        status: true,
+        data: "hostel not Found",
+      });
+    }
+  } catch (error) {
+    res.send({ status: false, data: "An Error Occured", result: error });
+  }
+};
+
+//changing status from false to true
+const change = async (req, res) => {
+  try {
+    await Bookings.findById(req.params.id);
+    const book = await Bookings.updateOne(
+      { _id: req.params.id },
+      { $set: { book_status: true } }
+    );
+    res.send({
+      status: true,
+      data: "status updated",
+      result: book,
+    });
+  } catch (error) {
+    res.send({
+      data: "Error occured",
+      status: false,
+      result: error,
+    });
+  }
+};
+//changing status from  true to false
+const reverse = async (req, res) => {
+  try {
+    await Bookings.findById(req.params.id);
+    const book = await Bookings.updateOne(
+      { _id: req.params.id },
+      { $set: { book_status: false } }
+    );
+    res.send({
+      status: true,
+      data: "status updated",
+      result: book,
+    });
+  } catch (error) {
+    res.send({
+      data: "Error occured",
+      status: false,
+      result: error,
+    });
   }
 };
 
@@ -701,4 +767,7 @@ module.exports = {
   landlord_booking,
   rooms_for_landlord_false,
   rooms_for_landlord,
+  reverse,
+  delete_book,
+  change,
 };

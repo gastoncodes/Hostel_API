@@ -31,6 +31,9 @@ const {
   updatebooked,
   deleteallbookings,
   newslettersubscription,
+  deletebook,
+  reversebook,
+  changebook,
 } = require("./routes/route");
 const ConnectDB = require("./db/connect");
 const cors = require("cors");
@@ -56,7 +59,8 @@ app.use((req, res, next) => {
 
 // get api
 app.get("/", (req, res) => {
-  res.redirect("https://kanlyte.com");
+  // res.redirect("https://kanlyte.com");
+  res.send("Don;t you think you are out of place ............");
 });
 //send email
 
@@ -98,6 +102,9 @@ app.use("api/v6/", getbookings);
 app.use("api/v6/", addbooking);
 app.use("api/v6/", updatebooked);
 app.use("api/v6/", deleteallbookings);
+app.use("api/v6/", deletebook);
+app.use("api/v6/", reversebook);
+app.use("api/v6/", changebook);
 
 //newsletter
 app.use("api/v6", newslettersubscription);
