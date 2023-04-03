@@ -225,6 +225,9 @@ const bookingRoomSchema = new mongoose.Schema({
   name_of_hostel: {
     type: String,
   },
+  booking_fee: {
+    type: Number,
+  },
   room_number: {
     type: String,
   },

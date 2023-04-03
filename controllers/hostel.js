@@ -497,6 +497,7 @@ const book_room = async (req, res) => {
       room_number: parseInt(req.body.room_number),
       email: req.body.email,
       level: req.body.level,
+      booking_fee: req.body.booking_fee,
       type_of_entry: req.body.type_of_entry,
       location: req.body.location,
       payment_code: req.body.payment_code,
