@@ -36,6 +36,8 @@ const {
   changebook,
   allreviews,
   newreviews,
+  contact_us,
+  allcontactus,
 } = require("./routes/route");
 const ConnectDB = require("./db/connect");
 const cors = require("cors");
@@ -108,11 +110,15 @@ app.use("api/v6/", reversebook);
 app.use("api/v6/", changebook);
 
 //newsletter
-app.use("api/v6", newslettersubscription);
+app.use("api/v6/", newslettersubscription);
 
 // reviews
-app.use("api/v6", allreviews);
-app.use("api/v6", newreviews);
+app.use("api/v6/", allreviews);
+app.use("api/v6/", newreviews);
+
+// contact us
+app.use("api/v6/", contact_us);
+app.use("api/v6", allcontactus);
 
 //database connectivity
 ConnectDB();

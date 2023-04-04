@@ -293,6 +293,24 @@ const reviewschema = new mongoose.Schema({
 id(reviewschema);
 const Reviews = new mongoose.model("reviews", reviewschema);
 
+// contact us
+const contactschema = new mongoose.Schema({
+  name: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  subject: {
+    type: String,
+  },
+  message: {
+    type: String,
+  },
+});
+id(contactschema);
+const Contact = new mongoose.model("contactus", contactschema);
+
 module.exports = {
   Hostel,
   Users,
@@ -303,4 +321,5 @@ module.exports = {
   LandLordRequest,
   NewsLetter,
   Reviews,
+  Contact,
 };
