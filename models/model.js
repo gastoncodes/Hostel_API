@@ -278,6 +278,21 @@ const newsletterSchema = new mongoose.Schema({
 id(newsletterSchema);
 const NewsLetter = new mongoose.model("newsletter", newsletterSchema);
 
+// reviews
+const reviewschema = new mongoose.Schema({
+  review: {
+    type: String,
+  },
+  name: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+});
+id(reviewschema);
+const Reviews = new mongoose.model("reviews", reviewschema);
+
 module.exports = {
   Hostel,
   Users,
@@ -287,4 +302,5 @@ module.exports = {
   Bookings,
   LandLordRequest,
   NewsLetter,
+  Reviews,
 };

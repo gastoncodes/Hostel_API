@@ -1,5 +1,5 @@
 // const router = require("express").Router();
-const { Users, NewsLetter } = require("../models/model");
+const { Users, NewsLetter, Reviews } = require("../models/model");
 
 /*
   Users have three routes:
@@ -162,6 +162,39 @@ const newsletter = async (req, res) => {
     res.send({ status: false, data: "An Error Occured", result: error });
   }
 };
+
+// posting reviews,
+const reviews = async (req, res) => {
+  try {
+    const newreview = new Reviews({
+      review: req.body.review,
+      name: req.body.review,
+      email: req.body.email,
+    });
+    const save_review = await newreview.save();
+    res.send({
+      status: true,
+      data: "sent",
+      result: save_review,
+    });
+  } catch (error) {
+    res.send({ status: false, data: "An Error Occured", result: error });
+  }
+};
+
+//getting all reviews
+const all_reviews = async (req, res) => {
+  try {
+    const reviews = await Reviews.find();
+    res.send({
+      status: true,
+      result: reviews,
+      data: "reviews",
+    });
+  } catch (error) {
+    res.send({ status: false, data: "An Error Occured", result: error });
+  }
+};
 module.exports = {
   register_user,
   user_login,
@@ -170,4 +203,6 @@ module.exports = {
   all_users,
   one_user,
   newsletter,
+  reviews,
+  all_reviews,
 };

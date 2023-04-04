@@ -34,6 +34,8 @@ const {
   deletebook,
   reversebook,
   changebook,
+  allreviews,
+  newreviews,
 } = require("./routes/route");
 const ConnectDB = require("./db/connect");
 const cors = require("cors");
@@ -107,6 +109,10 @@ app.use("api/v6/", changebook);
 
 //newsletter
 app.use("api/v6", newslettersubscription);
+
+// reviews
+app.use("api/v6", allreviews);
+app.use("api/v6", newreviews);
 
 //database connectivity
 ConnectDB();

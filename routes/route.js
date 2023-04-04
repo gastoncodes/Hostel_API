@@ -54,6 +54,7 @@ const {
   all_users,
   one_user,
   newsletter,
+  reviews,
 } = require("../controllers/user");
 
 //admin  routes
@@ -135,6 +136,10 @@ const changebook = router.put("/change/true/:id", change);
 //   user_booking
 // );
 
+// reviews
+const newreviews = router.post("/new/review", reviews);
+const allreviews = router.get("/allreviews", reviews);
+
 //routes for hostel owners
 
 module.exports = {
@@ -184,4 +189,6 @@ module.exports = {
   reversebook,
   changebook,
   deletebook,
+  allreviews,
+  newreviews,
 };
