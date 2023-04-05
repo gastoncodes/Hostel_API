@@ -289,6 +289,9 @@ const reviewschema = new mongoose.Schema({
   email: {
     type: String,
   },
+  hostel_id: {
+    type: String,
+  },
 });
 id(reviewschema);
 const Reviews = new mongoose.model("reviews", reviewschema);

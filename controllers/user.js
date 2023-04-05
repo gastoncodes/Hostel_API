@@ -170,6 +170,7 @@ const reviews = async (req, res) => {
       review: req.body.review,
       name: req.body.review,
       email: req.body.email,
+      hostel_id: req.body.hostel_id,
     });
     const save_review = await newreview.save();
     res.send({
@@ -195,7 +196,20 @@ const all_reviews = async (req, res) => {
     res.send({ status: false, data: "An Error Occured", result: error });
   }
 };
+//getting reviews by hostel id
 
+const hostel_reviews = async (req, res) => {
+  try {
+    const reviews = await Reviews.find({ hostel_id: req.params.hostel_id });
+    res.send({
+      status: true,
+      result: reviews,
+      data: "reviews",
+    });
+  } catch (error) {
+    res.send({ status: false, data: "An Error Occured", result: error });
+  }
+};
 // post contact us
 const contactus = async (req, res) => {
   try {
@@ -243,4 +257,5 @@ module.exports = {
   all_reviews,
   all_contact,
   contactus,
+  hostel_reviews,
 };

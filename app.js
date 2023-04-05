@@ -38,6 +38,7 @@ const {
   newreviews,
   contact_us,
   allcontactus,
+  hostelreviews,
 } = require("./routes/route");
 const ConnectDB = require("./db/connect");
 const cors = require("cors");
@@ -115,6 +116,7 @@ app.use("api/v6/", newslettersubscription);
 // reviews
 app.use("api/v6/", allreviews);
 app.use("api/v6/", newreviews);
+app.use("api/v6/", hostelreviews);
 
 // contact us
 app.use("api/v6/", contact_us);
